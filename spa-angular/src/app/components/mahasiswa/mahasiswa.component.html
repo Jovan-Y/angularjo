@@ -1,0 +1,84 @@
+<div class="container mt-4">
+  <h2>Daftar Mahasiswa</h2>
+
+  <!-- Tombol untuk membuka modal -->
+  <button
+    type="button"
+    class="btn btn-primary mb-3"
+    data-bs-toggle="modal"
+    data-bs-target="#tambahMahasiswaModal"
+  >
+    Tambah Mahasiswa
+  </button>
+
+  <!-- Modal Tambah Mahasiswa -->
+  <div
+    class="modal fade"
+    id="tambahMahasiswaModal"
+    tabindex="-1"
+    aria-labelledby="tambahMahasiswaModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tambahMahasiswaModalLabel">
+            Tambah Mahasiswa
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="mahasiswaForm" (ngSubmit)="addMahasiswa()">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama Mahasiswa</label>
+              <input
+                id="nama"
+                type="text"
+                class="form-control"
+                formControlName="nama"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="singkatan" class="form-label">Singkatan</label>
+              <input
+                id="singkatan"
+                type="text"
+                class="form-control"
+                formControlName="singkatan"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="isSubmitting"
+            >
+              {{ isSubmitting ? "Menyimpan..." : "Tambah Mahasiswa" }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Mahasiswa -->
+  <table class="table table-bordered table-striped" *ngIf="!isLoading">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Singkatan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mahasiswa">
+        <td>{{ item.nama }}</td>
+        <td>{{ item.singkatan }}</td>
+        <td>{{ item.fakultas_id.nama}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
