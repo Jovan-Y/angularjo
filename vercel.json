@@ -1,10 +1,10 @@
 {
     "version": 2,
     "builds": [
-      { "src": "dist/spa-angular/browser/**", "use": "@vercel/static" }
+      { "src": "app.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "/index.html" }
+      { "src": "/(.*)", "dest": "/app.js" }
     ]
   }
   
