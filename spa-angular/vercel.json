@@ -1,9 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "src/", "use": "@vercel/static" }
+    { "src": "dist/spa-angular/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+
