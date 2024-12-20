@@ -1,7 +1,7 @@
 {
    "version": 1,
    "builds": [
-     { "src": "dist/spa-angular/", "use": "@vercel/static" }
+     { "src": "dist/spa-angular/browser", "use": "@vercel/static" }
    ],
    "routes": [
      { "src": "/(.*)", "dest": "/index.html" }
